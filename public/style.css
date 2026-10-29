@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the Word Party</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">Guess the Word Party</div>
+      </header>
+
+      <main>
+        <section id="landing" class="panel active">
+          <h1>Real-time word guessing chaos</h1>
+          <p>Join a room by code or host a new game for up to 8 players.</p>
+
+          <div class="card-grid">
+            <div class="card">
+              <h2>Create Room</h2>
+              <input id="create-name" maxlength="18" placeholder="Your name" />
+              <button id="create-room-btn">Create Room</button>
+            </div>
+
+            <div class="card">
+              <h2>Join Room</h2>
+              <input id="join-name" maxlength="18" placeholder="Your name" />
+              <input id="join-code" maxlength="5" placeholder="Room code" />
+              <button id="join-room-btn">Join Game</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="lobby" class="panel">
+          <div class="panel-header">
+            <h2>Lobby</h2>
+            <div id="room-code-badge" class="badge">ROOM</div>
+          </div>
+
+          <div class="lobby-layout">
+            <div class="player-list-wrap">
+              <h3>Players</h3>
+              <ul id="player-list" class="player-list"></ul>
+            </div>
+
+            <div class="lobby-actions">
+              <button id="start-game-btn" class="primary">Start Match</button>
+              <button id="leave-room-btn" class="secondary">Leave Room</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="game" class="panel">
+          <div class="game-topbar">
+            <div>
+              <div id="round-label" class="mini-label">Round 1</div>
+              <h2 id="round-type">Clue Guess</h2>
+            </div>
+            <div class="timer-box">
+              <span>Time</span>
+              <strong id="timer-display">30s</strong>
+            </div>
+          </div>
+
+          <div class="prompt-box">
+            <div id="prompt-text">Prompt</div>
+          </div>
+
+          <form id="guess-form" class="guess-form">
+            <input id="guess-input" maxlength="40" placeholder="Type your guess" autocomplete="off" />
+            <button type="submit">Submit</button>
+          </form>
+
+          <div id="status-message" class="status-message"></div>
+
+          <div class="scoreboard-wrap">
+            <h3>Leaderboard</h3>
+            <ul id="scoreboard" class="scoreboard"></ul>
+          </div>
+        </section>
+
+        <section id="end-screen" class="panel">
+          <h1 id="winner-title">Winner!</h1>
+          <div id="winner-name" class="winner-name">Player</div>
+          <div class="scoreboard-wrap">
+            <h3>Final Standings</h3>
+            <ul id="final-scoreboard" class="scoreboard"></ul>
+          </div>
+          <button id="play-again-btn" class="primary">Play Again</button>
+        </section>
+      </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
